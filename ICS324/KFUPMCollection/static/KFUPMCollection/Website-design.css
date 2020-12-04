@@ -36,7 +36,7 @@ html {
   padding: 3px;
 }
 .picheader {
-background-color: #51b37d;
+  background-image: url('/static/image/back.jpg');
   background-repeat: repeat-x;
   background-size: 100%;
   top: 0em;
@@ -185,7 +185,7 @@ a {
 .footer {
   max-height: 350px;
   position: relative;
-  background-color: #dac5ab;
+  background-image: url('/static/image/footer-background-01.jpg');
   color: white;
 }
 
@@ -226,8 +226,7 @@ a {
   height: 10%;
   width: 30%;
   background: linear-gradient(to left, rgb(13, 117, 202), rgb(3, 80, 151));
-  margin-top: 5%;
-  margin-left: 3%;
+  margin-left: 7%;
   border: black;
 }
 
@@ -276,7 +275,8 @@ a {
 }
 /* /Body/ */
 body {
-background-color: #dac5ab;
+  background-image: url("/static/image/footer-background-01.jpg");
+
   background-size: 1000%;
   background-position: 100%;
   height: 100%;

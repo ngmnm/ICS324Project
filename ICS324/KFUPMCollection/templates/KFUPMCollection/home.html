@@ -3,28 +3,46 @@
 
 {% block content %}
 
-    <!--Header-->
-  
-    <!--Page content-->
-    <div class="middle">
-        <div class="container">
 
 
-       
+<!--Page content-->
+<div class="middle">
 
 
-            <!-- display departments -->
-            <h1>hi there</h1>
-            <h1>hi there</h1>
-            <h1>hi there</h1>
-            <h1>hi there</h1>
-            <h1>hi there</h1>
-            <h1>hi there</h1>
-            <h1>hi there</h1>
-            <h1>hi there</h1>
 
-   
-        <!-- Footer-->
-     
+    <div class="container">
 
-   {% endblock content %}
+        {% for i in department %}
+
+        <div class="bg1 ">
+            <h2><i class="{{ i.icon }}"></i></h2>
+            <p class="course">{{ i.name }}</p>
+            <button class="button">Resources</button>
+            <button class="button">Instructors Evaluation</button>
+        </div>
+        <!-- display departments -->
+        {% endfor %}
+
+        <div class="bg1 ">
+            <h2><i class="fas fa-rocket "></i></h2>
+            <p class="course">AE</p>
+            <button class="button">Resources</button>
+            <button class="button">Instructors Evaluation</button>
+        </div>
+        <div class="bg1 ">
+            <h2><i class="fas fa-drafting-compass"></i></h2>
+            <p class="course">CE</p>
+            <button class="button">Resources</button>
+            <button class="button">Instructors Evaluation</button>
+        </div>
+        <div class="bg1 ">
+            <h2><i class="fas fa-plus"></i></h2>
+            <p class="course">Add New Department</p>
+            
+        </div>
+      
+      
+
+    </div>
+
+    {% endblock content %}
