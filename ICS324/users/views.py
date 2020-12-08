@@ -11,7 +11,7 @@ def signup(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created from {username}!')
-            return redirect('KFUPMCollection/home.html')
+            return redirect('login')
 
     else:
         form = UserRegisterForm()
