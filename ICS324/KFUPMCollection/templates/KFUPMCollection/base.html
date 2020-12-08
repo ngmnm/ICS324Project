@@ -10,7 +10,7 @@
    <link rel="stylesheet" type="text/css" href="{% static 'KFUPMCollection/Website-design.css' %}">
    <link rel="stylesheet" type="text/css" href="{% static 'KFUPMCollection/log.css' %}">
    <link rel="stylesheet" type="text/css" href="{% static 'KFUPMCollection/about.css' %}">
-   <script src="{% static 'KFUPMCollection/lastDesignMain.js' %}"></script>   
+   <script src="{% static 'KFUPMCollection/lastDesignMain.js' %}"></script>
 
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -36,7 +36,7 @@
    </div>
    <div class="Login">
       <button class="buttonup loged" onclick="document.getElementById('login').style.display='block'">Log In</button>
-      <a href="../Main-page/signForm.php"><button class="buttonup loged">Sign Up</button></a>
+      <a href="/signup/"><button class="buttonup loged">Sign Up</button></a>
       <!-- check if the user is loged in to the page -->
       <form id="login" class="popUp" action="login.php" method="POST">
 
@@ -87,6 +87,15 @@
 
    <div class="picheader">
    </div>
+   {% if messages %}
+   {% for message in messages %}
+  
+
+   <div class="alert alert-{{ message.tags}}">
+      {{ message}}
+   </div>
+   {% endfor %}
+   {% endif %}
    {% block content %}{% endblock %}
 
    <div class="footer">
