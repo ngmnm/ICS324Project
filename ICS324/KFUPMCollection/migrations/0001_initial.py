@@ -10,13 +10,13 @@ class Migration(migrations.Migration):
     dependencies = [
     ]
 
-    operations = [
-        migrations.CreateModel(
-            name='department',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=250)),
-                ('icon', models.CharField(max_length=250)),
-            ],
-        ),
-    ]
+    # operations = [
+    #     migrations.CreateModel(
+    #         name='department',
+    #         fields=[
+    #             ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+    #             ('name', models.CharField(max_length=250)),
+    #             ('icon', models.CharField(max_length=250)),
+    #         ],
+    #     ),
+    # ]
