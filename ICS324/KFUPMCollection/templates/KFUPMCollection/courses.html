@@ -14,19 +14,23 @@
 
         <ul class="ulu">
 
+
             {% for i in courses %}
-           
-            <li class="lil">
-                <span class="icon"><i class="fa fa-folder" aria-hidden="true"></i></span>
-                <span class="course">{{ i.Name }}</span>
-                <span class="download"><i class="fa fa-download" aria-hidden="true"></i></span>
-            </li>
+          
+        
+         
+                    {% if i.id|slugify == depID %}
+                    <li class="lil">
+                        <span class="icon"><i class="fa fa-folder" aria-hidden="true"></i></span>
+                        <span class="course">{{ i.Name }}</span>
+                        <span class="download"><i class="fa fa-download" aria-hidden="true"></i></span>
+                    </li>
+                    {% endif %}
+
+
 
             {% endfor %}
-
-          
         </ul>
-
 
 
     </div>

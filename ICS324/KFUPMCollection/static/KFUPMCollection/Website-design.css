@@ -343,7 +343,7 @@ a {
   color: black;
 }
 
-/* .button{
+.button{
   display: inline-block;
   text-align: center;
   position: relative;
@@ -354,4 +354,4 @@ a {
   border: none;
   opacity: 1;
   background: linear-gradient(to left, rgb(41, 131, 204), rgb(13, 138, 96));
-  } */
+  }

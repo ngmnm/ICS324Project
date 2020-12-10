@@ -11,8 +11,10 @@ def home(request):
 
 
 def courses(request):
+   
     context = {
-        'courses': course.objects.all()
+        'courses': course.objects.all(),
+         'depID': request.GET.get('depID')
     }
     return render(request, 'KFUPMCollection/courses.html', context)
 
