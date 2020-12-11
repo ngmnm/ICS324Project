@@ -36,13 +36,20 @@
         </div>
         <!-- display departments -->
         {% endfor %}
-
-<!--       
+        {% if user.is_superuser %}
+        <div class="bg1 ">
+            <h2><i class="fas fa-plus"></i></h2>
+            <p class="course">Add New Department</p>
+         
+        </div>
+ 
+    {% endif %}
+        <!--       
         <div class="bg1 ">
             <h2><i class="fas fa-plus"></i></h2>
             <p class="course">Add New Department</p>
             
-        </div> --> 
+        </div> -->
 
 
 
