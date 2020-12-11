@@ -22,6 +22,18 @@ class course(models.Model):
     class Meta:
         db_table = "course"
 
+class instructor(models.Model):
+
+    Name = models.CharField(max_length=250)
+    IID = models.CharField(max_length=250)
+    Office_Phone_number = models.CharField(max_length=250)
+    Email = models.CharField(max_length=250)
+    Office_location = models.CharField(max_length=250)
+    website = models.CharField(max_length=250)
+
+    class Meta:
+        db_table = "instructor"
+
 
 class dep(models.Model):
 
