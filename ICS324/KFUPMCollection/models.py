@@ -64,6 +64,22 @@ class question(models.Model):
     class Meta:
         db_table = "question"
 
+class contains(models.Model):
+
+    QID = models.CharField(max_length=250)
+    EID = models.CharField(max_length=250)
+
+    class Meta:
+        db_table = "contains"
+
+class question(models.Model):
+    QID = models.CharField(max_length=250)
+    Qname = models.CharField(max_length=250)
+    Weight = models.IntegerField(default=0)
+
+    class Meta:
+        db_table = "question"
+
 
 class dep(models.Model):
 
