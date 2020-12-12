@@ -12,6 +12,7 @@ urlpatterns = [
     path('newDep_submit/', views.newDep_submit, name='KFUPMCollection/newDep_submit.html'),
     path('newCourse/', views.newCourse, name='newCourse'),
     path('newCourse_submit/', views.newCourse_submit, name='KFUPMCollection/newCourse_submit.html'),
-    
+    path('addQuestion', views.addQuestion, name='KFUPMCollection/addQuestion.html'),
+    path('addQuestionSubmission', views.addQuestionSubmission, name='KFUPMCollection/addQuestionSubmission.html'),
 
 ]
