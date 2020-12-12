@@ -11,14 +11,12 @@ def home(request):
     }
     return render(request, 'KFUPMCollection/home.html', context)
 
-
 def courses(request):
     context = {
         'courses': course.objects.all(),
         'depID': request.GET.get('depID')
     }
     return render(request, 'KFUPMCollection/courses.html', context)
-
 
 def instructors(request):
     context = {
@@ -27,10 +25,8 @@ def instructors(request):
     }
     return render(request, 'KFUPMCollection/instructors.html', context)
 
-
 def evaluation(request):
     return render(request, 'KFUPMCollection/evaluation.html')
-
 
 def evaluations(request):
     context = {
@@ -38,7 +34,6 @@ def evaluations(request):
         'insID': request.GET.get('insID')
     }
     return render(request, 'KFUPMCollection/evaluation.html', context)
-
 
 def evaluationdetailes(request):
     context = {
