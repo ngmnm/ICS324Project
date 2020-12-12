@@ -15,21 +15,31 @@
         <ul class="ulu">
 
 
+            {% if user.is_superuser %}
+            <li class="lil" style="background-color: azure;">
+                <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                <span class="course">Add new course</span>
+                <a href="{% url 'newCourse/' %}">
+                    <i class="fas fa-plus"></i>
+                </a> </li>
+
+            {% endif %}
             {% for i in courses %}
-          
-        
-         
-                    {% if i.id|slugify == depID %}
-                    <li class="lil">
-                        <span class="icon"><i class="fa fa-folder" aria-hidden="true"></i></span>
-                        <span class="course">{{ i.Name }}</span>
-                        <span class="download"><i class="fa fa-download" aria-hidden="true"></i></span>
-                    </li>
-                    {% endif %}
+
+
+
+            {% if i.DID|slugify == depID %}
+            <li class="lil">
+                <span class="icon"><i class="fa fa-folder" aria-hidden="true"></i></span>
+                <span class="course">{{ i.Name }}</span>
+                <span class="download"><i class="fa fa-download" aria-hidden="true"></i></span>
+            </li>
+            {% endif %}
 
 
 
             {% endfor %}
+
         </ul>
 
 
