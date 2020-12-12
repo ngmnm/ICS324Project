@@ -23,6 +23,17 @@ class course(models.Model):
     class Meta:
         db_table = "course"
 
+class evaluation(models.Model):
+
+    EID = models.CharField(max_length=250)
+    comments = models.CharField(max_length=250)
+    E_Date = models.CharField(max_length=250)
+    SID = models.CharField(max_length=250)
+    IID = models.CharField(max_length=250)
+
+    class Meta:
+        db_table = "evaluation"
+
 class instructor(models.Model):
 
     Name = models.CharField(max_length=250)
@@ -34,6 +45,24 @@ class instructor(models.Model):
 
     class Meta:
         db_table = "instructor"
+
+class answer(models.Model):
+
+    AID = models.CharField(max_length=250)
+    Rate = models.CharField(max_length=250)
+    QID = models.CharField(max_length=250)
+
+    class Meta:
+        db_table = "answer"
+
+class question(models.Model):
+
+    QID = models.CharField(max_length=250)
+    Weight = models.CharField(max_length=250)
+    Qname = models.CharField(max_length=250)
+
+    class Meta:
+        db_table = "question"
 
 
 class dep(models.Model):

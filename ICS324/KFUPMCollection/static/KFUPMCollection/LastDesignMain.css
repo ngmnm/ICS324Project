@@ -85,7 +85,7 @@ p {
 }
 
 .button {
-  display: none;
+  /* display: none; */
   text-align: center;
   position: relative;
   height: 20%;

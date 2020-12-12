@@ -1,7 +1,13 @@
 from django.shortcuts import render
+
 from django.contrib import messages
 from .models import departments, course, instructor
 from django.http import HttpResponse 
+
+
+from .models import departments, course, instructor,evaluation, answer, question
+from django.http import HttpResponse
+from django.contrib import messages
 
 
 def home(request):
@@ -22,14 +28,34 @@ def courses(request):
 
 def instructors(request):
     context = {
-        'instructors': instructor.objects.all()
+        'instructors': instructor.objects.all(),
+        'insID': request.GET.get('insID')
     }
     return render(request, 'KFUPMCollection/instructors.html', context)
+
 
 
 def evaluation(request):
 
     return render(request, 'KFUPMCollection/evaluation.html')
+
+def evaluations(request):
+   
+    context = {
+        'evaluations': evaluation.objects.all(),
+         'insID': request.GET.get('insID')
+    }
+    return render(request, 'KFUPMCollection/evaluation.html', context)
+
+def evaluationdetailes(request):
+   
+    context = {
+        'evaluationAnswers': answer.objects.all(),
+        'evaluationQuestions': question.objects.all(),
+        'evaID': request.GET.get('evaID')
+    }
+    return render(request, 'KFUPMCollection/evaluationd.html', context)
+
 
 
 def about(request):
@@ -53,17 +79,20 @@ def newDep_submit(request):
 
 def newCourse(request):
     context = {
-        'department': departments.objects.all()
+        'department': departments.objects.all(),
+        'depID': request.GET.get('depID')
     }
     return render(request, 'KFUPMCollection/newCourse.html', context)
 
 
 def newCourse_submit(request):
-    name = models.CharField('name')
-    CID = models.CharField('courseID')
-    prerequisites = models.CharField('prerequisties')
-    
-    newCourse = course(Name=name, CID=CID, prerequisites=prerequisites)
+    name = request.POST.get('name', False);
+    CID = request.POST.get('name', False);
+    prerequisites = request.POST.get('prerequisties', False);
+    DID = request.POST.get('depID', False);
+    newCourse = course(Name=name, CID=CID, prerequisites=prerequisites, DID=DID )
     newCourse.save()
     messages.success(request, f' {name} has been created!')
+
     return render(request, 'KFUPMCollection/newCourse_submit.html')
+

@@ -18,7 +18,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <title>New Dep</title>
+    <title>Log IN</title>
     <link rel="stylesheet" href="{% static 'users/signup.css' %}">
 </head>
 
@@ -26,24 +26,15 @@
     <div class="main">
         <div class="container">
 
+           
+          
+            <h2>Adding New Course Done</h2>
+          
 
-
-            <h2>Adding New Course </h2>
-            <form id="signUp" class="inputGroup1" method="POST" action='/newCourse_submit/'>
-                {% csrf_token %}
                 
-              
-               
-              
-                <input type="text" placeholder="write the deparment ID '{{depID}}' again   " class="input-field" name="depID" required>
-                <input type="text" placeholder="Course Name" class="input-field" name="name" required>
-               
-                <input type="text" placeholder="Prerequisties" class="input-field" name="prerequisties">
-
-                <button type="submit" class="submitBtn">Add New Course</button>
-
+                <a href="{% url 'home' %}"><button class="submitBtn">return to the main page</button></a>
             </form>
-
+           
         </div>
 
     </div>

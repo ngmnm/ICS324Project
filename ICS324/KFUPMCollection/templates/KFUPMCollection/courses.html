@@ -11,17 +11,24 @@
 
 
     <div class="container">
+        <script type="text/javascript">
+            
 
+            function newCourse(clicked_id) {
+                location.href = "/newCourse?depID=" + clicked_id;
+            }
+            function course(clicked_id) {
+                location.href = "/newCourse?depID=" + clicked_id;
+            }
+        </script>
         <ul class="ulu">
 
 
             {% if user.is_superuser %}
             <li class="lil" style="background-color: azure;">
-                <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                <span class="course">Add new course</span>
-                <a href="{% url 'newCourse/' %}">
-                    <i class="fas fa-plus"></i>
-                </a> </li>
+               
+                <button class='lil' id='{{ depID }}' onClick='newCourse(this.id)'>new course</button>
+            </li>
 
             {% endif %}
             {% for i in courses %}

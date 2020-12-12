@@ -7,7 +7,7 @@
 <!--Page Content-->
 <script>
 function evaluation(clicked_id) {
-    location.href = "evaluationd?evaID=" + clicked_id;
+    location.href = "evaluation?evaID=" + clicked_id;
 }
 
 </script>
@@ -30,32 +30,16 @@ color: black;
    
         <tr>
             <th >
-                <h3>Evaluation Number</h3>
+                <h3>Question</h3>
             </th>
             <th >
-                <h3>Final Grade</h3>
-            </th>
-            <th >
-                <h3>comments</h3>
-            </th>
-            <th >
-                <h3>View</h3>
+                <h3>Rate</h3>
             </th>
         </tr>
         <tr>
+            {% for i in evaluationQuestions %}
+            {% if i.IID|slugify == insID %}
            
-            {% for i in evaluations %}
-            {% if i.IID|slugify == insID %}
-           <th>{{ i.id }}</th>
-            {% endif %}
-            {% endfor %}
-            <th></th>
-            {% for i in evaluations %}
-            {% if i.IID|slugify == insID %}
-            <th>{{ i.comments }}</th>
-            {% endif %}
-            {% endfor %}
-            <th><button  class="button" style="width: 2cm; height: 0.8cm;" id= '{{i.EID}}' onClick='evaluation(this.id)'>VIEW</button></th>
                 
 
         
