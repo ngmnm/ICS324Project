@@ -1,17 +1,8 @@
 from django.shortcuts import render
-<<<<<<< HEAD
-
 from django.contrib import messages
-from .models import departments, course, instructor
-from django.http import HttpResponse 
-
-
-from .models import departments, course, instructor,evaluation, answer, question
-=======
-from .models import departments, course, instructor,evaluation, answer, question, contains
->>>>>>> 8781639d14452e7f98592e23654fa7415f765ea0
+from .models import departments, course, instructor, workFor
 from django.http import HttpResponse
-from django.contrib import messages
+from .models import departments, course, instructor, evaluation, answer, question, contains
 
 
 def home(request):
@@ -22,7 +13,6 @@ def home(request):
 
 
 def courses(request):
-
     context = {
         'courses': course.objects.all(),
         'depID': request.GET.get('depID')
@@ -38,33 +28,26 @@ def instructors(request):
     return render(request, 'KFUPMCollection/instructors.html', context)
 
 
-
 def evaluation(request):
-
     return render(request, 'KFUPMCollection/evaluation.html')
 
+
 def evaluations(request):
-   
     context = {
         'evaluations': evaluation.objects.all(),
-         'insID': request.GET.get('insID')
+        'insID': request.GET.get('insID')
     }
     return render(request, 'KFUPMCollection/evaluation.html', context)
 
+
 def evaluationdetailes(request):
-   
     context = {
         'evaluationAnswers': answer.objects.all(),
         'evaluationQuestions': question.objects.all(),
-<<<<<<< HEAD
-        'evaID': request.GET.get('evaID')
-=======
+        'evaID': request.GET.get('evaID'),
         'evaluationQA': contains.objects.all(),
-         'evaID': request.GET.get('evaID')
->>>>>>> 8781639d14452e7f98592e23654fa7415f765ea0
     }
     return render(request, 'KFUPMCollection/evaluationd.html', context)
-
 
 
 def about(request):
@@ -72,14 +55,13 @@ def about(request):
 
 
 def newDep(request):
-    
     return render(request, 'KFUPMCollection/newDep.html')
 
 
 def newDep_submit(request):
     name = request.POST.get('name', False);
     icon = request.POST.get('icon', False);
-    DID =  request.POST.get('DID', False);
+    DID = request.POST.get('DID', False);
     newDep = departments(name=name, icon=icon, DID=DID)
     newDep.save()
     messages.success(request, f' {name} has been created!')
@@ -99,15 +81,12 @@ def newCourse_submit(request):
     CID = request.POST.get('name', False);
     prerequisites = request.POST.get('prerequisties', False);
     DID = request.POST.get('depID', False);
-    newCourse = course(Name=name, CID=CID, prerequisites=prerequisites, DID=DID )
+    newCourse = course(Name=name, CID=CID, prerequisites=prerequisites, DID=DID)
     newCourse.save()
     messages.success(request, f' {name} has been created!')
-<<<<<<< HEAD
 
     return render(request, 'KFUPMCollection/newCourse_submit.html')
 
-=======
-    return render(request, 'KFUPMCollection/newCourse_submit.html')
 
 def addQuestionSubmission(request):
     print("Question has been submitted.")
@@ -119,8 +98,29 @@ def addQuestionSubmission(request):
     question_info.save()
     return render(request, 'KFUPMCollection/addQuestion.html')
 
-def addQuestion(request):
 
+def addQuestion(request):
     return render(request, 'KFUPMCollection/addQuestion.html')
 
->>>>>>> 8781639d14452e7f98592e23654fa7415f765ea0
+
+def newInstructor(request):
+    return render(request, 'KFUPMCollection/newInstructor.html')
+
+
+def newInstructor_submit(request):
+    nameI = request.POST.get('Name_field', False);
+    IIDI = request.POST.get('DID_field', False);
+    DIDI = request.POST.get('DID_field', False);
+    OfficePhoneI = request.POST.get('OfficePhone_field', False);
+    EmailI = request.POST.get('Email_field', False);
+    OfficeLocationI = request.POST.get('OfficeLocation_field', False);
+    WebsiteI = request.POST.get('Website_field', False);
+
+    newI = instructor(Name=nameI, IID=IIDI, Office_Phone_number=OfficePhoneI, Email=EmailI,
+                      Office_location=OfficeLocationI, website=WebsiteI)
+    newI.save()
+    newWorkfor = workFor(DID=DIDI, IID=IIDI)
+    newWorkfor.save()
+
+    messages.success(request, f' {nameI} has been created!')
+    return render(request, 'KFUPMCollection/newInstructor_submit.html')
