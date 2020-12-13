@@ -23,6 +23,18 @@ class course(models.Model):
     class Meta:
         db_table = "course"
 
+class resource(models.Model):
+
+    Name = models.CharField(max_length=250)
+    RID = models.CharField(max_length=250)
+    Type = models.CharField(max_length=250)
+    CID = models.CharField(max_length=250)
+    path = models.FileField(upload_to='KFUPMCollection/static/upload/', max_length=100)
+
+    class Meta:
+        db_table = "resource"
+
+
 class evaluation(models.Model):
 
     EID = models.CharField(max_length=250)

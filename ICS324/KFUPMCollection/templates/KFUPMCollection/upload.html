@@ -18,7 +18,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <title>New Dep</title>
+    <title>upload</title>
     <link rel="stylesheet" href="{% static 'users/signup.css' %}">
 </head>
 
@@ -26,19 +26,17 @@
     <div class="main">
         <div class="container">
 
-         
-         
-            <h2>Adding New Deparment </h2>
-            <form id="signUp" class="inputGroup1" method="POST" action='/newDep_submit/'>
+            <h2>Uplaod New File </h2>
+            <form id="signUp" class="inputGroup1" method="POST"     enctype="multipart/form-data">
                 {% csrf_token %}
+                {{ forms|crispy}}
 
-                <input type="text" placeholder="Name" class="input-field" name="name" required>
-                <input type="text" placeholder="Icon" class="input-field" name="icon" required>
 
-                <button type="submit" class="submitBtn">Add New Department</button>
+
+                
+                <button type="submit" class="submitBtn">Upload file</button>
 
             </form>
-           
         </div>
 
     </div>

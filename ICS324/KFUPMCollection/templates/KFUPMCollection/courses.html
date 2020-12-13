@@ -11,23 +11,15 @@
 
 
     <div class="container">
-        <script type="text/javascript">
-            
-
-            function newCourse(clicked_id) {
-                location.href = "/newCourse?depID=" + clicked_id;
-            }
-            function course(clicked_id) {
-                location.href = "/newCourse?depID=" + clicked_id;
-            }
-        </script>
+      
         <ul class="ulu">
 
 
             {% if user.is_superuser %}
-            <li class="lil" style="background-color: azure;">
-               
-                <button class='lil' id='{{ depID }}' onClick='newCourse(this.id)'>new course</button>
+            <li class='lil' id='{{ depID }}' onClick='newCourse(this.id)' style="background-color: azure;">
+                <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                <span class="course">New Course</span>
+             
             </li>
 
             {% endif %}
@@ -36,10 +28,11 @@
 
 
             {% if i.DID|slugify == depID %}
-            <li class="lil">
+            
+            <li class="lil" id='{{ i.CID }}' onClick='resource(this.id)'>
                 <span class="icon"><i class="fa fa-folder" aria-hidden="true"></i></span>
                 <span class="course">{{ i.Name }}</span>
-                <span class="download"><i class="fa fa-download" aria-hidden="true"></i></span>
+                
             </li>
             {% endif %}
 
@@ -52,5 +45,14 @@
 
     </div>
 </div>
+<script type="text/javascript">
+            
 
+    function newCourse(clicked_id) {
+        location.href = "/newCourse?depID=" + clicked_id;
+    }
+    function resource(clicked_id) {
+        location.href = "/resource?CourseID=" + clicked_id;
+    }
+</script>
 {% endblock content %}

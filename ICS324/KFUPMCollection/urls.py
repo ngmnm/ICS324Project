@@ -4,6 +4,9 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('courses/', views.courses, name='KFUPMCollection/courses.html'),
+    path('resource/upload_done/', views.upload_done, name='KFUPMCollection/upload_done.html'),
+    path('resource/upload/', views.upload, name='KFUPMCollection/upload.html'),
+    path('resource/', views.resource, name='KFUPMCollection/resource.html'),
     path('newDep/', views.newDep, name='newDep'),
     path('newDep_submit/', views.newDep_submit, name='KFUPMCollection/newDep_submit.html'),
     path('newCourse/', views.newCourse, name='newCourse'),

@@ -3,25 +3,33 @@
 
 {% block content %}
 
-    <!--Page content-->
-    <script>
-        function evaluation(clicked_id) {
-                location.href = "evaluations?insID=" + clicked_id;
-            }
-    </script>
-    <div class="middle">
-        {% for i in instructors %}
-        <div class="container">
-            <button class="bg1" id= '{{i.IID}}' onClick='evaluation(this.id)'>  
-               
-                <div class="bg1 ">
-                    <p class="course">{{ i.Name }}</p>
-                </div>
-                {% endfor %}
-            </button>
-        </div>
-           
+<!--Page content-->
+<script>
+    function evaluation(clicked_id) {
+        location.href = "evaluations?insID=" + clicked_id;
+    }
+</script>
+
+
+{% if user.is_superuser %}
+<li class='lil' id='{{ depID }}' onClick='newCourse(this.id)' style="background-color: azure;">
+    <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+    <span class="course">New Course</span>
+
+</li>
+<div class="middle">
+    {% for i in instructors %}
+    <div class="container">
+        <button class="bg1" id='{{i.IID}}' onClick='evaluation(this.id)'>
+
+            <div class="bg1 ">
+                <p class="course">{{ i.Name }}</p>
+            </div>
+            {% endfor %}
+        </button>
     </div>
 
+</div>
 
-    {% endblock content %}
+
+{% endblock content %}
