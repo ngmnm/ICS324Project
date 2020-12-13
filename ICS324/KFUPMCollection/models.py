@@ -7,6 +7,7 @@ class departments(models.Model):
 
     name = models.CharField(max_length=250)
     icon = models.CharField(max_length=250)
+    DID = models.CharField(max_length=250)
 
     class Meta:
         db_table = "department"
@@ -21,6 +22,18 @@ class course(models.Model):
 
     class Meta:
         db_table = "course"
+
+class resource(models.Model):
+
+    Name = models.CharField(max_length=250)
+    RID = models.CharField(max_length=250)
+    Type = models.CharField(max_length=250)
+    CID = models.CharField(max_length=250)
+    path = models.FileField(upload_to='KFUPMCollection/static/upload/', max_length=100)
+
+    class Meta:
+        db_table = "resource"
+
 
 class evaluation(models.Model):
 
@@ -44,6 +57,14 @@ class instructor(models.Model):
 
     class Meta:
         db_table = "instructor"
+
+class workFor(models.Model):
+
+    DID = models.CharField(max_length=250)
+    IID = models.CharField(max_length=250)
+
+    class Meta:
+        db_table = "work_for"
 
 class answer(models.Model):
 
@@ -81,19 +102,8 @@ class contains(models.Model):
     class Meta:
         db_table = "contains"
 
-class question(models.Model):
-    QID = models.CharField(max_length=250)
-    Qname = models.CharField(max_length=250)
-    Weight = models.IntegerField(default=0)
-
-    class Meta:
-        db_table = "question"
-
 
 class dep(models.Model):
 
     name = models.CharField(max_length=250)
     icon = models.CharField(max_length=250)
-
-
-# Create your models here.

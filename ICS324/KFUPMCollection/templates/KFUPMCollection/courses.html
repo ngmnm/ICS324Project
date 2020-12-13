@@ -11,17 +11,16 @@
 
 
     <div class="container">
-
+      
         <ul class="ulu">
 
 
             {% if user.is_superuser %}
-            <li class="lil" style="background-color: azure;">
+            <li class='lil' id='{{ depID }}' onClick='newCourse(this.id)' style="background-color: azure;">
                 <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                <span class="course">Add new course</span>
-                <a href="{% url 'newCourse/' %}">
-                    <i class="fas fa-plus"></i>
-                </a> </li>
+                <span class="course">New Course</span>
+             
+            </li>
 
             {% endif %}
             {% for i in courses %}
@@ -29,10 +28,11 @@
 
 
             {% if i.DID|slugify == depID %}
-            <li class="lil">
+            
+            <li class="lil" id='{{ i.CID }}' onClick='resource(this.id)'>
                 <span class="icon"><i class="fa fa-folder" aria-hidden="true"></i></span>
                 <span class="course">{{ i.Name }}</span>
-                <span class="download"><i class="fa fa-download" aria-hidden="true"></i></span>
+                
             </li>
             {% endif %}
 
@@ -45,5 +45,14 @@
 
     </div>
 </div>
+<script type="text/javascript">
+            
 
+    function newCourse(clicked_id) {
+        location.href = "/newCourse?depID=" + clicked_id;
+    }
+    function resource(clicked_id) {
+        location.href = "/resource?CourseID=" + clicked_id;
+    }
+</script>
 {% endblock content %}

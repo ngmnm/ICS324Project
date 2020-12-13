@@ -1,0 +1,62 @@
+{% extends "KFUPMCollection/base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+<!--Page content-->
+<div class="middle">
+
+
+
+  <div class="container">
+
+    <ul class="ulu">
+
+      <script type="text/javascript">
+        function UploadPage(clicked_id) {
+          location.href = "upload?courseID=" + clicked_id;
+        }
+      </script>
+
+
+      {% if user.is_authenticated %}
+
+      <li style='list-style-type: none;width: 50%;text-align: right;height: 30px;' class='specialL' id='{{ courseID }}'
+        onclick='UploadPage(this.id)'>
+        <span class="course" class="specialL"> <button class="button">Uplode File</bitton></span>
+        <span class="download"><i class="fa fa-upload" aria-hidden="true"></i></span>
+      </li>
+
+      {% endif %}
+      <li class="lil" style="background-color: azure;">
+        <span class="" style="width:300px ">File Name </span>
+        <span class="type" style="margin-left: 50%;"> File Type</span>
+      </li>
+      {% for i in resource %}
+
+
+
+      {% if i.CID|slugify == courseID %}
+
+      <li class="lil">
+        <span class="" style="width:300px">{{ i.Name }} </span>
+        <span class="type" style="margin-left: 50%;"> {{ i.Type }}</span>
+        <span class="download"><a href="{{i.path}}" download> <i class="fa fa-download" aria-hidden="true"> </i></a> </span>
+      </li>
+      {% endif %}
+
+
+
+      {% endfor %}
+
+
+
+    </ul>
+
+
+  </div>
+</div>
+
+{% endblock content %}

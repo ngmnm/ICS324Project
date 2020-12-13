@@ -15,9 +15,9 @@
         {% if i.DID|slugify == depID%}
         {% if j.IID == i.IID%}
         <div class="container">
-            <button class="bg1" id= '{{i.IID}}' onClick='evaluation(this.id)'>  
+            <button class="bg1"style="background-color: blanchedalmond; "  id= '{{i.IID}}' onClick='evaluation(this.id)'>  
                
-                <div class="bg1 ">
+                <div class="bg1 " >
                     <p class="course">{{ j.Name }}</p>
                 </div>
                 {% endif %}
@@ -29,5 +29,7 @@
            
     </div>
 
+</div>
 
-    {% endblock content %}
+
+{% endblock content %}
