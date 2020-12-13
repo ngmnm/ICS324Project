@@ -7,8 +7,12 @@
 <!--Page Content-->
 <script>
 function evaluation(clicked_id) {
+    location.href = "addEvaluation?insID=" + clicked_id;
+}
+function evaluationV(clicked_id) {
     location.href = "evaluationd?evaID=" + clicked_id;
 }
+
 
 </script>
 <style>
@@ -27,7 +31,9 @@ color: black;
 <div class="middle">
     <h1></h1>
     <table class="tablee">
-   
+        <button  class="button" style="width: 4cm; height: 0.8cm;" 
+        id="{{insID}}" 
+        onClick='evaluation(this.id)'>ADD Evaluation</button>
         <tr>
             <th >
                 <h3>Evaluation Number</h3>
@@ -46,9 +52,11 @@ color: black;
             {% if i.IID|slugify == insID %}
            <th>{{ i.id }}</th>
             <th>{{ i.comments }}</th>
-            <th><button  class="button" style="width: 2cm; height: 0.8cm;" id= '{{i.EID}}' onClick='evaluation(this.id)'>VIEW</button></th>
+            <th><button  class="button" style="width: 2cm; height: 0.8cm;" id= '{{i.EID}}' onClick='evaluationV(this.id)'>VIEW</button></th>
             {% endif %}
+            <tr></tr>
             {% endfor %}
+
             
                 
 

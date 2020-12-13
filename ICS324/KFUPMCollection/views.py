@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import departments, course, instructor,evaluation, answer, question, contains
+from .models import departments, course, instructor,evaluation, answer, question, contains, work_for
 from django.http import HttpResponse
 from django.contrib import messages
 
@@ -21,7 +21,8 @@ def courses(request):
 def instructors(request):
     context = {
         'instructors': instructor.objects.all(),
-        'insID': request.GET.get('insID')
+        'workfor': work_for.objects.all(),
+         'depID': request.GET.get('depID')
     }
     return render(request, 'KFUPMCollection/instructors.html', context)
 
@@ -30,6 +31,8 @@ def evaluations(request):
    
     context = {
         'evaluations': evaluation.objects.all(),
+        'instructors': instructor.objects.all(),
+
          'insID': request.GET.get('insID')
     }
     return render(request, 'KFUPMCollection/evaluation.html', context)
@@ -94,4 +97,34 @@ def addQuestionSubmission(request):
 def addQuestion(request):
 
     return render(request, 'KFUPMCollection/addQuestion.html')
+
+def addEvaluationSubmission(request):
+    print("Evaluation has been submitted.")
+    answerQ01= request.POST["answerQ1"]
+    answerQ02= request.POST["answerQ2"]
+    answerQ03= request.POST["answerQ3"]
+    comment1= request.POST["comment"]
+    SID1= request.POST["SID1"]
+    insID01= request.POST["insID1"]
+   
+    newEvaluation = evaluation(id=evaluation.objects.all().count()+1, EID=evaluation.objects.all().count()+1, comments=comment1 , E_Date=0000-00-00, SID=SID1, IID=insID01)
+    newEvaluation.save()
+
+    newAnswer1 = answer(id=answer.objects.all().count()+1, AID=answer.objects.all().count()+1 ,Rate = answerQ01, QID=1, EID=newEvaluation.EID )
+    newAnswer1.save()
+
+    newAnswer2 = answer(id=answer.objects.all().count()+1, AID=answer.objects.all().count()+1, Rate = answerQ02, QID=2, EID=newEvaluation.EID )
+    newAnswer2.save()
+
+    newAnswer3 = answer(id=answer.objects.all().count()+1, AID=answer.objects.all().count()+1, Rate = answerQ03, QID=3, EID=newEvaluation.EID )
+    newAnswer3.save()
+
+    return render(request, 'KFUPMCollection/addEvaluationSubmission.html')
+
+def addEvaluation(request):
+    context = {
+        'evaluationQuestions': question.objects.all(),
+         'insID': request.GET.get('insID')
+    }
+    return render(request, 'KFUPMCollection/addEvaluation.html', context)
 

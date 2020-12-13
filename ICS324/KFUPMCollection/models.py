@@ -50,6 +50,8 @@ class answer(models.Model):
     AID = models.CharField(max_length=250)
     Rate = models.CharField(max_length=250)
     QID = models.CharField(max_length=250)
+    EID = models.CharField(max_length=250)
+    
 
     class Meta:
         db_table = "answer"
@@ -62,6 +64,14 @@ class question(models.Model):
 
     class Meta:
         db_table = "question"
+
+class work_for(models.Model):
+
+    IID = models.CharField(max_length=250)
+    DID = models.CharField(max_length=250)
+
+    class Meta:
+        db_table = "work_for"
 
 class contains(models.Model):
 

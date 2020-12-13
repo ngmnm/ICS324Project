@@ -37,22 +37,19 @@ color: black;
             </th>
         </tr>
         <tr>
-            {% for i in evaluationQA %}
-            {% if i.EID|slugify == evaID %}
-            {% for j in evaluationQuestions %}
-            {% if j.QID == i.QID %}
-            <th>{{ j.Qname }}</th>
-            {% for z in evaluationAnswers %}
-            {% if j.QID == z.QID %}
-            <th>{{ z.Rate }}</th>
+            {% for i in evaluationQuestions %}
+            <th>{{ i.Qname }}</th>
+            {% for j in evaluationAnswers %}
+            {% if j.EID|slugify == insID %}
+            {% if i.QID == j.QID %}
+            <th>{{ j.Rate }}</th>
+
+            {% endif %}
+            {% endif %}
+            {% endfor %}
             <tr></tr>
-            {% endif %}
             {% endfor %}
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% endfor %}
-                
+            
         </tr>
     
        
