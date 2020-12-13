@@ -58,6 +58,14 @@ class instructor(models.Model):
     class Meta:
         db_table = "instructor"
 
+class workFor(models.Model):
+
+    DID = models.CharField(max_length=250)
+    IID = models.CharField(max_length=250)
+
+    class Meta:
+        db_table = "work_for"
+
 class answer(models.Model):
 
     AID = models.CharField(max_length=250)
@@ -84,20 +92,8 @@ class contains(models.Model):
     class Meta:
         db_table = "contains"
 
-class question(models.Model):
-    QID = models.CharField(max_length=250)
-    Qname = models.CharField(max_length=250)
-    Weight = models.IntegerField(default=0)
-
-    class Meta:
-        db_table = "question"
-
 
 class dep(models.Model):
 
     name = models.CharField(max_length=250)
     icon = models.CharField(max_length=250)
-
-
-
-

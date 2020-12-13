@@ -8,8 +8,10 @@ from django.http import HttpResponse
 from .models import departments, course, instructor, evaluation, answer, question
 
 from .models import departments, course, instructor, evaluation, answer, question, contains, resource
-from django.http import HttpResponse
 from django.contrib import messages
+from .models import departments, course, instructor, workFor
+from django.http import HttpResponse
+from .models import departments, course, instructor, evaluation, answer, question, contains
 
 from . import models
 from . import forms
@@ -24,7 +26,6 @@ def home(request):
 
 
 def courses(request):
-
     context = {
         'courses': course.objects.all(),
         'depID': request.GET.get('depID')
@@ -41,12 +42,10 @@ def instructors(request):
 
 
 def evaluation(request):
-
     return render(request, 'KFUPMCollection/evaluation.html')
 
 
 def evaluations(request):
-
     context = {
         'evaluations': evaluation.objects.all(),
         'insID': request.GET.get('insID')
@@ -55,16 +54,34 @@ def evaluations(request):
 
 
 def evaluationdetailes(request):
-
     context = {
         'evaluationAnswers': answer.objects.all(),
         'evaluationQuestions': question.objects.all(),
         'evaID': request.GET.get('evaID'),
-
         'evaluationQA': contains.objects.all(),
-        'evaID': request.GET.get('evaID')
     }
     return render(request, 'KFUPMCollection/evaluationd.html', context)
+
+
+def newInstructor(request):
+    return render(request, 'KFUPMCollection/newInstructor.html')
+
+
+def newInstructor_submit(request):
+    nameI = request.POST.get('Name_field', False)
+    IIDI = request.POST.get('DID_field', False)
+    DIDI = request.POST.get('DID_field', False)
+    OfficePhoneI = request.POST.get('OfficePhone_field', False)
+    EmailI = request.POST.get('Email_field', False)
+    OfficeLocationI = request.POST.get('OfficeLocation_field', False)
+    WebsiteI = request.POST.get('Website_field', False)
+    newI = instructor(Name=nameI, IID=IIDI, Office_Phone_number=OfficePhoneI, Email=EmailI,
+                      Office_location=OfficeLocationI, website=WebsiteI)
+    newI.save()
+    newWorkfor = workFor(DID=DIDI, IID=IIDI)
+    newWorkfor.save()
+    messages.success(request, f' {nameI} has been created!')
+    return render(request, 'KFUPMCollection/newInstructor_submit.html')
 
 
 def about(request):
@@ -72,7 +89,6 @@ def about(request):
 
 
 def newDep(request):
-
     return render(request, 'KFUPMCollection/newDep.html')
 
 
@@ -122,7 +138,6 @@ def addQuestionSubmission(request):
 
 
 def addQuestion(request):
-
     return render(request, 'KFUPMCollection/addQuestion.html')
 
 
